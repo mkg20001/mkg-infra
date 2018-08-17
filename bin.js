@@ -93,7 +93,7 @@ function sync () {
   wlink('*', 'nginx/_')
   wlink('*', 'nginx/conf.d')
   link('nginx/nginx.conf')
-  link('ssl/acme-wrapper.sh')
+  link('ssl/tool.sh')
   link('dns/tool.sh')
 }
 

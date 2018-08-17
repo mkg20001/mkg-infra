@@ -48,8 +48,12 @@ ssl_certificate_key /etc/ssl/letsencrypt/$d/$d.key;
       acme --issue --dns dns_cf "${domains[@]}"
       main genconf
       ;;
+    acme)
+      shift
+      acme "$@"
+      ;;
     *)
-      echo "Usage: $0 {add, renew, genconf}"
+      echo "Usage: $0 {add, renew, genconf, acme}"
       ;;
   esac
 }
