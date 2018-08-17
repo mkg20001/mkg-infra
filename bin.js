@@ -51,6 +51,16 @@ if (!(isInside(repoFolder, mainFolder) || fs.readdirSync(repoFolder).indexOf('.g
   throw new Error('Please don\'t use the globally installed version of this module! This would otherwise break the symlinks on every system!')
 }
 
+let config
+
+function loadConfig () {
+  config = require(path.join(mainFolder, 'config.json'))
+}
+
+function saveConfig () {
+  fs.writeFileSync(path.join(mainFolder, 'config.json'), JSON.stringify(config, 0, 2))
+}
+
 /* file functions */
 
 function link (from, to) {
@@ -89,18 +99,47 @@ function wlink (g, from, to) {
 
 /* actual functions */
 
+const addons = {
+  base: {
+    init: () => {
+      cp('gitignore_repo', '.gitignore')
+    }
+  },
+  nginx: {
+    init: () => {
+      cp('nginx/sites/00-default.conf')
+    },
+    sync: () => {
+      wlink('*', 'nginx/_')
+      wlink('*', 'nginx/conf.d')
+      link('nginx/nginx.conf')
+      link('ssl/tool.sh')
+    }
+  },
+  dns: {
+    init: () => {
+      cp('dns/domains/example.com')
+    },
+    sync: () => {
+      link('dns/tool.sh')
+    }
+  }
+}
+
 function sync () {
-  wlink('*', 'nginx/_')
-  wlink('*', 'nginx/conf.d')
-  link('nginx/nginx.conf')
-  link('ssl/tool.sh')
-  link('dns/tool.sh')
+  config.addons.concat(['base']).forEach(ad => {
+    if (addons[ad].sync) {
+      addons[ad].sync()
+    }
+  })
 }
 
 function init () {
-  cp('nginx/sites/00-default.conf')
-  cp('gitignore_repo', '.gitignore')
-  cp('dns/domains/example.com')
+  config.addons.concat(['base']).forEach(ad => {
+    if (addons[ad].init) {
+      addons[ad].init()
+    }
+  })
 }
 
 /* cli */
@@ -111,6 +150,8 @@ require('yargs') // eslint-disable-line no-unused-expressions
     describe: 'Initializes a new repo',
     builder: {},
     handler (argv) {
+      config = {addons: []}
+      saveConfig()
       init()
       sync()
     }
@@ -120,7 +161,23 @@ require('yargs') // eslint-disable-line no-unused-expressions
     describe: 'Syncronizes an existing repo',
     builder: {},
     handler (argv) {
+      loadConfig()
       sync()
+    }
+  })
+  .command({
+    command: 'enable <addon>',
+    describe: 'Enable an addon',
+    handler (argv) {
+      loadConfig()
+      if (config.addons.indexOf(argv.addon) === -1 && addons[argv.addon]) {
+        config.addons.push(argv.addon)
+        addons[argv.addon].init()
+        sync()
+      } else {
+        console.error('Addon already enabled or does not exist')
+        console.error('Available addons: ' + Object.keys(addons).join(', '))
+      }
     }
   })
   .argv
