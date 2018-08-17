@@ -14,6 +14,7 @@ Link on server:
 Link in repo:
   nginx/_/*
   nginx/conf.d/*
+  nginx/nginx.conf
   ssl/acme-wrapper.sh
 
 Cp to repo on init:
@@ -86,6 +87,7 @@ function wlink (g, from, to) {
 function sync () {
   wlink('*', 'nginx/_')
   wlink('*', 'nginx/conf.d')
+  link('nginx/nginx.conf')
   link('ssl/acme-wrapper.sh')
 }
 
