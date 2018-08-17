@@ -4,21 +4,26 @@
 
 /* eslint-disable no-console */
 
-// TODO: cli to manage repos using this template
+// cli to manage repos using this template
 
 /*
 
 Link on server:
-  ssl -> /etc/letsencrypt
+  ssl/acme -> /etc/letsencrypt
+  nginx/sites -> /etc/nginx/sites
+  nginx/conf.d -> /etc/nginx/conf.d
+  nginx/_ -> /etc/nginx/_
 
 Link in repo:
   nginx/_/*
   nginx/conf.d/*
   nginx/nginx.conf
   ssl/acme-wrapper.sh
+  dns/tool.sh
 
 Cp to repo on init:
   nginx/sites/00-default.conf
+  dns/domains/example.com
 
 */
 
@@ -89,10 +94,13 @@ function sync () {
   wlink('*', 'nginx/conf.d')
   link('nginx/nginx.conf')
   link('ssl/acme-wrapper.sh')
+  link('dns/tool.sh')
 }
 
 function init () {
   cp('nginx/sites/00-default.conf')
+  cp('gitignore_repo', '.gitignore')
+  cp('dns/domains/example.com')
 }
 
 /* cli */
