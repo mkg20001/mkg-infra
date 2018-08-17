@@ -12,7 +12,7 @@ acme() {
 main() {
   case "$1" in
     renew) # renew all certs
-      acme --cron
+      acme --cron "$@"
       ;;
     genconf) # generate nginx snippets for ssl
       nssl=$(readlink -f "$PWD/../nginx/_/ssl")
