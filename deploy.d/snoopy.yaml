@@ -1,0 +1,8 @@
+affects:
+  - '*'
+modules:
+  pkg:
+    - snoopy
+lifecycle:
+  install.pre:
+    - debconf-set-selections <<< "snoopy snoopy/install-ld-preload boolean true"

@@ -103,6 +103,7 @@ const addons = {
   base: {
     init: () => {
       cp('gitignore_repo', '.gitignore')
+      cp('deploy.yaml')
     }
   },
   nginx: {
@@ -110,6 +111,8 @@ const addons = {
       cp('nginx/sites/00-default.conf')
     },
     sync: () => {
+      link('deploy.d/nginx.yaml')
+      link('deploy.d/ssl.yaml')
       wlink('*', 'nginx/_')
       wlink('*', 'nginx/conf.d')
       link('nginx/nginx.conf')
@@ -122,6 +125,22 @@ const addons = {
     },
     sync: () => {
       link('dns/tool.sh')
+    }
+  },
+  snoopy: {
+    sync: () => {
+      link('deploy.d/snoopy.yaml')
+      link('etc/snoopy.ini')
+    }
+  },
+  fail2ban: {
+    sync: () => {
+      link('deploy.d/fail2ban.yaml')
+    }
+  },
+  node: {
+    sync: () => {
+      link('deploy.d/node.yaml')
     }
   }
 }

@@ -1,0 +1,16 @@
+affects:
+  - $nginx
+modules:
+  pkg:
+    - nginx
+  ufw:
+    - allow 'nginx full'
+  link:
+    nginx/_: /etc/nginx/_
+    nginx/conf.d: /etc/nginx/conf.d
+    nginx/sites: /etc/nginx/sites
+    nginx/html: /usr/share/nginx/html
+    nginx/nginx.conf: /etc/nginx/nginx.conf
+lifecycle:
+  post.post:
+    - service nginx reload

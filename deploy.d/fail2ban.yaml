@@ -1,0 +1,5 @@
+affects:
+  - '*'
+modules:
+  pkg:
+    - fail2ban
