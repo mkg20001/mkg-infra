@@ -1,5 +1,6 @@
 affects:
   - '*'
+priority: 5
 modules:
   pkg:
     - curl

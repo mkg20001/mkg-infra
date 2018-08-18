@@ -1,5 +1,6 @@
 affects:
   - '*'
+priority: 20
 modules:
   pkg:
     - docker-ce
