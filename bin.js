@@ -192,6 +192,7 @@ require('yargs') // eslint-disable-line no-unused-expressions
       if (config.addons.indexOf(argv.addon) === -1 && addons[argv.addon]) {
         config.addons.push(argv.addon)
         addons[argv.addon].init()
+        saveConfig()
         sync()
       } else {
         console.error('Addon already enabled or does not exist')
