@@ -1,0 +1,22 @@
+affects:
+  - '*'
+priority: 20
+modules:
+  pkg:
+  # htop: process monitor
+    - htop
+  # nload/nethogs: network monitor
+    - nload
+    - nethogs
+  # iotop: disk monitor
+    - iotop
+  # wget/curl: HTTP
+    - wget
+    - curl
+  # nano: editor
+    - nano
+  # tree/ncdu: file analytics
+    - tree
+    - ncdu
+  # glances: netdata for cli, basically
+    - glances

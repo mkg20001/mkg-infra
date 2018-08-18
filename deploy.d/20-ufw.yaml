@@ -1,0 +1,11 @@
+affects:
+  - '*'
+priority: 20
+modules:
+  pkg:
+    - ufw
+  ufw:
+    - allow openssh
+lifecycle:
+  post.post: |
+    yes | sudo ufw enable

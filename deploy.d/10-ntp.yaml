@@ -1,0 +1,6 @@
+affects:
+  - '*'
+priority: 10
+modules:
+  pkg:
+    - ntp

@@ -127,20 +127,28 @@ const addons = {
       link('dns/tool.sh')
     }
   },
-  snoopy: {
+  node: {
     sync: () => {
-      link('deploy.d/snoopy.yaml')
+      link('deploy.d/20-node.yaml')
+    }
+  },
+  docker: {
+    sync: () => {
+      link('deploy.d/20-docker-ce.yaml')
+    }
+  },
+  security: { // pretty basic but still worth it
+    sync: () => {
+      link('deploy.d/10-fail2ban.yaml')
+      link('deploy.d/10-snoopy.yaml')
+      link('deploy.d/20-ufw.yaml')
       link('etc/snoopy.ini')
     }
   },
-  fail2ban: {
+  tools: {
     sync: () => {
-      link('deploy.d/fail2ban.yaml')
-    }
-  },
-  node: {
-    sync: () => {
-      link('deploy.d/node.yaml')
+      link('deploy.d/20-sysadmin-tools.yaml')
+      link('deploy.d/20-netdata.yaml')
     }
   }
 }
