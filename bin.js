@@ -165,6 +165,11 @@ const addons = {
       link('deploy.d/30-no-root-pubkey-only.yaml')
       link('deploy.d/30-sudo-nopasswd.yaml')
     }
+  },
+  ipfs: {
+    sync: () => {
+      link('deploy.d/20-ipfs.yaml')
+    }
   }
 }
 
