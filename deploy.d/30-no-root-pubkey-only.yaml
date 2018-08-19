@@ -1,0 +1,28 @@
+affects:
+  - '*'
+priority: 30
+lifecycle:
+  pre.pre: |
+    sshdc="/etc/ssh/sshd_config"
+
+    sshd_install() {
+      cp "$sshdc" "$sshdc.bak"
+      # comment out whatever currently is set
+      sed -r "s|^(PermitRootLogin*)|#\1|g" -i "$sshdc"
+      sed -r "s|^(PermitEmptyPasswords*)|#\1|g" -i "$sshdc"
+      sed -r "s|^(PasswordAuthentication*)|#\1|g" -i "$sshdc"
+      sed -r "s|^(PubkeyAuthentication*)|#\1|g" -i "$sshdc"
+      # override
+      echo -e "PermitRootLogin no\nPermitEmptyPasswords no\nPasswordAuthentication no\nPubkeyAuthentication yes" >> "$sshdc"
+
+      service ssh reload
+    }
+
+    sshd_remove() {
+      cp "$sshdc.bak" "$sshdc"
+      service ssh reload
+    }
+  upgradeCond.pre: '[ "$SCRIPT_CUR_VERSION" != "$SCRIPT_VERSION" ]'
+  install.pre: sshd_install
+  remove.pre: sshd_remove
+  upgrade.pre: sshd_remove && sshd_install
