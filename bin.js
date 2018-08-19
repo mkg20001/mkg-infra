@@ -112,7 +112,6 @@ const addons = {
     },
     sync: () => {
       link('deploy.d/nginx.yaml')
-      link('deploy.d/ssl.yaml')
       wlink('*', 'nginx/_')
       wlink('*', 'nginx/conf.d')
       link('nginx/nginx.conf')
