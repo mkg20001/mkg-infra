@@ -106,6 +106,11 @@ const addons = {
       cp('deploy.yaml')
     }
   },
+  baseDeploy: {
+    sync: () => {
+      link('deploy.d/10-ntp.yaml')
+    }
+  },
   nginx: {
     init: () => {
       cp('nginx/sites/00-default.conf')
