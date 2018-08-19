@@ -1,3 +1,7 @@
 groups:
   some-group:
     - some-host
+config:
+  dataDirectory: '/etc/enter-script-state-location-here'
+  authUsers:
+    username: ['gh:githubName', 'lp:launchpadName']
