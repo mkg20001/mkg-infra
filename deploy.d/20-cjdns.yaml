@@ -38,4 +38,3 @@ lifecycle:
     }
   install.pre: cjdMain
   upgrade.pre: cjdMain
-  upgradeCond: '[ "$CJD_VER" !=  "$SCRIPT_CUR_VERSION" ]'

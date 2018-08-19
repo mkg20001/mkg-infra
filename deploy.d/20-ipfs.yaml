@@ -22,4 +22,3 @@ lifecycle:
     }
   install.pre: ipfs_install
   upgrade.pre: ipfs_upgrade
-  upgradeCond.pre: '[ "$SCRIPT_CUR_VERSION" != "$SCRIPT_VERSION" ]'
