@@ -7,5 +7,5 @@ modules:
   ufw:
     - allow openssh
 lifecycle:
-  post.post: |
+  install.post: |
     yes | sudo ufw enable
