@@ -1,0 +1,37 @@
+affects:
+  - '*'
+  - '$!nocjdns'
+priority: 20
+version: v20.2
+lifecycle:
+  pre.pre: |
+    CJD_VER="$SCRIPT_VERSION"
+    cjdMain() {
+      cd /opt
+      if [ -e cjdns ]; then
+        cd cjdns
+        sudo git fetch -p
+        sudo git checkout cjdns-$VERSION
+      else
+        sudo git clone https://github.com/cjdelisle/cjdns.git -b cjdns-$CJD_VER
+        cd cjdns
+      fi
+
+      git clean -dxf
+      sudo ./do
+      sudo rm /usr/bin/cjdroute
+      sudo cp -p /opt/cjdns/cjdroute /usr/bin
+      [ ! -e /etc/cjdroute.conf ] && sudo bash -c '(umask 077 && ./cjdroute --genconf > /etc/cjdroute.conf)'
+
+      port=$(sudo cat /etc/cjdroute.conf | grep "bind" | grep "0.0.0.0" | grep "[0-9][0-9][0-9]*" -o)
+      sudo ufw allow "$port/udp"
+
+      sudo cp contrib/systemd/cjdns.service /etc/systemd/system/
+      sudo cp contrib/systemd/cjdns-resume.service /etc/systemd/system/
+
+      sudo systemctl enable cjdns
+      sudo systemctl restart cjdns
+    }
+  install.pre: cjdMain
+  upgrade.pre: cjdMain
+  upgradeCond: '[ "$CJD_VER" !=  "$SCRIPT_CUR_VERSION" ]'

@@ -154,6 +154,11 @@ const addons = {
       link('deploy.d/20-sysadmin-tools.yaml')
       link('deploy.d/20-netdata.yaml')
     }
+  },
+  cjdns: {
+    sync: () => {
+      link('deploy.d/20-cjdns.yaml')
+    }
   }
 }
 
