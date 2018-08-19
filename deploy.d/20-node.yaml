@@ -1,5 +1,6 @@
 affects:
   - '*'
+  - '!$nonode'
 priority: 20
 modules:
   pkg:
