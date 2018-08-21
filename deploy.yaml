@@ -15,12 +15,17 @@ modules:
     storage:
       sshpass: '...'
       repo: 'sftp://...'
+    create:
+      exclude:
+        - /home/*/.cache/*
+        - /root/.cache/*
+        - /var/cache/*
+        - /var/tmp/*
+      excludeCaches: true
+      name: '{hostname}-{now}'
     prune:
       daily: 20
-    create:
-      exclude: [...]
-      excludeCaches: true
-      name: ""
+      prefix: '{hostname}-'
     extraArgs:
       create: []
       prune: []
