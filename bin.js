@@ -112,6 +112,7 @@ const addons = {
   },
   baseDeploy: {
     sync: () => {
+      link('deploy.d/shared/05-basic.yaml')
       link('deploy.d/shared/10-ntp.yaml')
     }
   },

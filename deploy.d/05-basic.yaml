@@ -6,6 +6,12 @@ modules:
     - curl
     - jq
     - coreutils
+  backup:
+    folders:
+      - /etc
+      - /var/log
+      - /home
+      - /root
 lifecycle: # we need to apt-get update here because this is the first thing that may be run on this server
   install.pre: |
     sudo apt-get update
