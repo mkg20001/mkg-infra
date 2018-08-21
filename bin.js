@@ -70,7 +70,11 @@ function link (from, to) {
   to = path.join(mainFolder, to)
   mkdirp(path.dirname(to))
   if (fs.existsSync(to)) {
-    fs.unlinkSync(to)
+    if (fs.lstatSync(to).isSymbolicLink()) {
+      fs.unlinkSync(to)
+    } else {
+      return
+    }
   }
   fs.symlinkSync(path.relative(path.dirname(to), path.join(repoFolder, from)), to)
 }
@@ -108,7 +112,7 @@ const addons = {
   },
   baseDeploy: {
     sync: () => {
-      link('deploy.d/10-ntp.yaml')
+      link('deploy.d/shared/10-ntp.yaml')
     }
   },
   nginx: {
@@ -116,7 +120,7 @@ const addons = {
       cp('nginx/sites/00-default.conf')
     },
     sync: () => {
-      link('deploy.d/nginx.yaml')
+      link('deploy.d/shared/nginx.yaml')
       wlink('*', 'nginx/_')
       wlink('*', 'nginx/conf.d')
       link('nginx/nginx.conf')
@@ -133,42 +137,42 @@ const addons = {
   },
   node: {
     sync: () => {
-      link('deploy.d/20-node.yaml')
+      link('deploy.d/shared/20-node.yaml')
     }
   },
   docker: {
     sync: () => {
-      link('deploy.d/20-docker-ce.yaml')
+      link('deploy.d/shared/20-docker-ce.yaml')
     }
   },
   security: { // pretty basic but still worth it
     sync: () => {
-      link('deploy.d/10-fail2ban.yaml')
-      link('deploy.d/10-snoopy.yaml')
-      link('deploy.d/20-ufw.yaml')
+      link('deploy.d/shared/10-fail2ban.yaml')
+      link('deploy.d/shared/10-snoopy.yaml')
+      link('deploy.d/shared/20-ufw.yaml')
       link('etc/snoopy.ini')
     }
   },
   tools: {
     sync: () => {
-      link('deploy.d/20-sysadmin-tools.yaml')
-      link('deploy.d/20-netdata.yaml')
+      link('deploy.d/shared/20-sysadmin-tools.yaml')
+      link('deploy.d/shared/20-netdata.yaml')
     }
   },
   cjdns: {
     sync: () => {
-      link('deploy.d/20-cjdns.yaml')
+      link('deploy.d/shared/20-cjdns.yaml')
     }
   },
   sshPasswordless: {
     sync: () => {
-      link('deploy.d/30-no-root-pubkey-only.yaml')
-      link('deploy.d/30-sudo-nopasswd.yaml')
+      link('deploy.d/shared/30-no-root-pubkey-only.yaml')
+      link('deploy.d/shared/30-sudo-nopasswd.yaml')
     }
   },
   ipfs: {
     sync: () => {
-      link('deploy.d/20-ipfs.yaml')
+      link('deploy.d/shared/20-ipfs.yaml')
     }
   }
 }

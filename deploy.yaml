@@ -3,5 +3,7 @@ groups:
     - some-host
 config:
   dataDirectory: '/etc/enter-script-state-location-here'
-  authUsers:
-    username: ['gh:githubName', 'lp:launchpadName']
+  auth:
+    username:
+      keys: ['gh:githubName', 'lp:launchpadName']
+      groups: ['sudo']
