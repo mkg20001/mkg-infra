@@ -157,12 +157,12 @@ const addons = {
   tools: {
     sync: () => {
       link('deploy.d/shared/20-sysadmin-tools.yaml')
-      link('deploy.d/shared/20-netdata.yaml')
+      link('deploy.d/shared/19-netdata.yaml')
     }
   },
   cjdns: {
     sync: () => {
-      link('deploy.d/shared/21-cjdns.yaml')
+      link('deploy.d/shared/20-cjdns.yaml')
     }
   },
   smc: {
