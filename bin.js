@@ -162,7 +162,12 @@ const addons = {
   },
   cjdns: {
     sync: () => {
-      link('deploy.d/shared/20-cjdns.yaml')
+      link('deploy.d/shared/21-cjdns.yaml')
+    }
+  },
+  smc: {
+    sync: () => {
+      link('deploy.d/shared/07-smc.yaml')
     }
   },
   sshPasswordless: {

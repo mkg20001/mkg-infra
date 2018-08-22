@@ -1,7 +1,7 @@
 affects:
   - '*'
   - '!$nocjdns'
-priority: 20
+priority: 21
 version: v20.2
 lifecycle:
   pre.pre: |

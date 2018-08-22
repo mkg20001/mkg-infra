@@ -1,0 +1,11 @@
+affects:
+  - '*'
+modules:
+  pkg:
+    - small-cleanup-script
+lifecycle:
+  install.pre: |
+    curl https://deb.mkg20001.io/install.sh | bash -ex -
+    add-apt-repository ppa:mkg20001/stable -y
+  install.post: |
+    small-cleanup-script
