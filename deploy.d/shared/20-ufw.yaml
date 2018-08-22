@@ -1,6 +1,6 @@
 affects:
   - '*'
-priority: 20
+priority: 19
 modules:
   pkg:
     - ufw
