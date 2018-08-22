@@ -11,6 +11,6 @@ modules:
     nginx/sites: /etc/nginx/sites
     nginx/html: /usr/share/nginx/html
     nginx/nginx.conf: /etc/nginx/nginx.conf
-    ssl/acme: /etc/letsencrypt
+    ssl/acme: /etc/ssl/letsencrypt
 lifecycle:
   post.post: service nginx reload
