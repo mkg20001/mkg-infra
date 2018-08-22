@@ -7,5 +7,5 @@ modules:
   link:
     etc/snoopy.ini: /etc/snoopy.ini
 lifecycle:
-  install.pre:
+  install.pre: |
     - debconf-set-selections <<< "snoopy snoopy/install-ld-preload boolean true"
