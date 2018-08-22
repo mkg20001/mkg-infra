@@ -23,7 +23,7 @@ lifecycle:
       echo ZGlmZiAtLWdpdCBhL25vZGVfYnVpbGQvVGVzdFJ1bm5lci5qcyBiL25vZGVfYnVpbGQvVGVzdFJ1bm5lci5qcwppbmRleCA4N2FjZDM4MC4uODA0NDE0NzcgMTAwNjQ0Ci0tLSBhL25vZGVfYnVpbGQvVGVzdFJ1bm5lci5qcworKysgYi9ub2RlX2J1aWxkL1Rlc3RSdW5uZXIuanMKQEAgLTE1LDcgKzE1LDcgQEAgdmFyIFNwYXduID0gcmVxdWlyZSgnY2hpbGRfcHJvY2VzcycpLnNwYXduOwogdmFyIEh0dHAgPSByZXF1aXJlKCJodHRwIik7CiB2YXIgRnMgPSByZXF1aXJlKCJmcyIpOwogCi12YXIgVElNRU9VVCA9IDE1MDAwOwordmFyIFRJTUVPVVQgPSA2MDAwMDA7CiAKIHZhciBwYXJzZVVSTCA9IGZ1bmN0aW9uICh1cmwpCiB7Cg== | base64 -d | git apply -
       # TODO remove patch above once https://github.com/cjdelisle/cjdns/pull/1178/files gets released
       TestRunner_TIMEOUT=600000 ./do
-      rm /usr/bin/cjdroute
+      rm -f /usr/bin/cjdroute
       cp -p /opt/cjdns/cjdroute /usr/bin
       [ ! -e /etc/cjdroute.conf ] && sudo bash -c '(umask 077 && ./cjdroute --genconf > /etc/cjdroute.conf)'
 
