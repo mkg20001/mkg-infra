@@ -35,7 +35,7 @@ ssl_certificate /etc/ssl/letsencrypt/$d/fullchain.cer;
 ssl_certificate_key /etc/ssl/letsencrypt/$d/$d.key;
 ssl_stapling on;
 ssl_stapling_verify on;
-ssl_trusted_certificate /etc/ssl/letsencrypt/$d/$d.key;
+ssl_trusted_certificate /etc/ssl/letsencrypt/$d/fullchain.cer;
 " > "$nssl/$d.conf"
         fi
       done
