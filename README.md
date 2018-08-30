@@ -17,6 +17,36 @@ Now you can install modules using `npx infra enable NAME`
 
 ## Modules
 
+- base: Basic files needed
+
+- baseDeploy: Basic deploy configuration (curl, jq, ntp)
+
 - nginx: ACME.sh SSL + nginx webserver config files
 
 - dns: simple-tf-dns + cloudflare config files
+
+- node: Installs nodeJS
+
+- docker: Installs docker-ce
+
+- security: Installs fail2ban, snoopy (command logging tool) and ufw (ufw will have allow openssh by default)
+
+- tools: Installs useful tools like nload, iotop and the well-known netdata dashboard
+
+- cjdns: Installs cjdns
+
+- smc: Installs small-cleanup-script
+
+- sshPasswordless: Installs a sudo-nopasswd for group sudo rule, disables SSH password login, enables public key login
+
+- ipfs: Installs go-ipfs
+
+## Nginx logs
+
+The format I created can be read like this:
+
+```log
+IP "X-Forwarded-For" - "REQUEST" [TIMESTAMP] RESULT_CODE RESULT_LENGTH HOST-BLOCK* "HTTP-HOST" "HTTP-REFERRER" "HTTP-USER-AGENT"
+```
+
+\*The first entrty in "server_name" of the current server block (useful for debugging)
