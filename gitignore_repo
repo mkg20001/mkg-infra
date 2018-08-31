@@ -1,4 +1,9 @@
+# dns addon
 .terraform
 *.tf
+# ssl addon
 http.header
 account.conf
+# nodeJS
+node_modules
+package-lock.json
