@@ -50,6 +50,7 @@ ssl_dhparam /etc/ssl/letsencrypt/$d/dhparams.pem;
       done
 
       acme --issue --dns dns_cf "${domains[@]}"
+      main dhparams
       main genconf
       ;;
     acme)
