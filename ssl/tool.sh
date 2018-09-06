@@ -63,7 +63,7 @@ ssl_dhparam /etc/ssl/letsencrypt/$d/dhparams.pem;
         conf="acme/$d/$d.conf"
         if [ -e "$conf" ]; then
           . "$conf"
-          # 1 week = 1000*60*60*24*7 in s
+          # 1 week = 60*60*24*7 in s
           (( last = $DH_LastRenew + 604800 ))
           create=false
           params="acme/$d/dhparams.pem"
