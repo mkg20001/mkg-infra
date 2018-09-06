@@ -4,7 +4,7 @@ modules:
   pkg:
     - nginx
   ufw:
-    - allow 'nginx full'
+    - allow 'nginx full' comment Web
   link:
     nginx/_: /etc/nginx/_
     nginx/conf.d: /etc/nginx/conf.d
