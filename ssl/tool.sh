@@ -31,6 +31,7 @@ main() {
           echo "
 include _/listen.conf;
 include _/modern-ssl.conf;
+include _/common.conf;
 $hsts
 ssl_certificate /etc/ssl/letsencrypt/$d/fullchain.cer;
 ssl_certificate_key /etc/ssl/letsencrypt/$d/$d.key;

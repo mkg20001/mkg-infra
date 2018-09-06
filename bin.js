@@ -119,6 +119,7 @@ const addons = {
   nginx: {
     init: () => {
       cp('nginx/sites/00-default.conf')
+      cp('nginx/_/common.conf')
     },
     sync: () => {
       link('deploy.d/shared/nginx.yaml')
