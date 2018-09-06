@@ -5,7 +5,7 @@ modules:
   pkg:
     - ufw
   ufw:
-    - allow openssh
+    - allow openssh comment SSH
 lifecycle:
   install.post: |
     yes | sudo ufw enable
