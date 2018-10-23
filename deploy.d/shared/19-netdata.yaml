@@ -6,12 +6,6 @@ lifecycle:
     bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait
   # needs to run as a post hook everytime as netdata sometimes changes values during auto-upgrades
   post.post: |
-    if file_contains /etc/netdata/python.d.conf "ipfs: yes"; then
-      repl_in_file "ipfs: yes" "ipfs: no" /etc/netdata/python.d.conf
-      repl_in_file "# ipfs:" "ipfs:" /etc/netdata/python.d.conf
-      ndr=true
-    fi
-
     if file_contains /etc/netdata/netdata.conf "bind to = \\*"; then
       if is_cjdns; then
         repl_in_file "# bind to = \\*" "bind to = \\*" /etc/netdata/netdata.conf
