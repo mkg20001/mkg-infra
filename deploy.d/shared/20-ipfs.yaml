@@ -2,7 +2,7 @@ affects:
   - '*'
   - '!$noipfs'
 priority: 20
-version: 'v0.4.17'
+version: 'v0.4.18'
 lifecycle:
   pre.pre: |
     ipfs_install() {
