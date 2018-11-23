@@ -5,6 +5,9 @@ priority: 20
 modules:
   pkg:
     - docker-ce
+  backup:
+    folders:
+      - /var/lib/docker/volumes
 lifecycle:
   install.pre: |
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
