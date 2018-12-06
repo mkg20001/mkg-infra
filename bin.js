@@ -17,6 +17,7 @@ Link on server:
 Link in repo:
   nginx/_/*
   nginx/conf.d/*
+  nginx/addon.d/*
   nginx/nginx.conf
   ssl/acme-wrapper.sh
   dns/tool.sh
@@ -125,6 +126,7 @@ const addons = {
       link('deploy.d/shared/nginx.yaml')
       wlink('*', 'nginx/_')
       wlink('*', 'nginx/conf.d')
+      wlink('*', 'nginx/addon.d')
       link('nginx/nginx.conf')
       link('ssl/tool.sh')
     }
