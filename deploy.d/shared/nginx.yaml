@@ -8,6 +8,7 @@ modules:
   link:
     nginx/_: /etc/nginx/_
     nginx/conf.d: /etc/nginx/conf.d
+    nginx/addon.d: /etc/nginx/addon.d
     nginx/sites: /etc/nginx/sites
     nginx/html: /usr/share/nginx/html
     nginx/nginx.conf: /etc/nginx/nginx.conf
