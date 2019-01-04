@@ -7,7 +7,7 @@ cf_ips() {
   echo
 
   for type in v4 v6; do
-    echo "## $type"
+    echo "# IP$type"
     curl -s "https://www.cloudflare.com/ips-$type" | sed "s|^|allow |g" | sed "s|\$|;|g"
     echo
   done
