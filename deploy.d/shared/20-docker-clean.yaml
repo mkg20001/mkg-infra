@@ -1,5 +1,6 @@
 affects:
-  - "$docker"
+  - '*'
+  - '!$nodocker'
 priority: 20
 lifecycle:
   install.pre: |

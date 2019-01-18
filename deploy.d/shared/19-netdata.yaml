@@ -3,6 +3,7 @@ affects:
 priority: 19
 lifecycle:
   install.pre: |
+    adduser netdata || /bin/true
     bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait
   # needs to run as a post hook everytime as netdata sometimes changes values during auto-upgrades
   post.post: |
