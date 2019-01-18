@@ -149,6 +149,11 @@ const addons = {
       link('deploy.d/shared/20-docker-ce.yaml')
     }
   },
+  dockerClean: {
+    sync: () => {
+      link('deploy.d/shared/20-docker-clean.yaml')
+    }
+  },
   security: { // pretty basic but still worth it
     sync: () => {
       link('deploy.d/shared/10-fail2ban.yaml')
