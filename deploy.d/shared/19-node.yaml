@@ -1,7 +1,7 @@
 affects:
   - '*'
   - '!$nonode'
-priority: 20
+priority: 19
 modules:
   pkg:
     - nodejs

@@ -141,7 +141,7 @@ const addons = {
   },
   node: {
     sync: () => {
-      link('deploy.d/shared/20-node.yaml')
+      link('deploy.d/shared/19-node.yaml')
     }
   },
   docker: {
