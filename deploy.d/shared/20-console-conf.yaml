@@ -1,0 +1,15 @@
+affects:
+ - '*'
+
+priority: 20
+
+module:
+  pkg:
+   - console-common
+   - v86d
+
+lifecycle:
+  install.post: |
+    locale-gen en_US.UTF-8
+    update-locale en_US.UTF-8
+    echo -e 'ACTIVE_CONSOLES="/dev/tty[1-6]"\nCHARMAP="UTF-8"\nCODESET="Lat15"\nFONTFACE="Terminus"\nFONTSIZE="8x16"\nVIDEOMODE=' > /etc/default/console-setup

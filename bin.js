@@ -117,6 +117,11 @@ const addons = {
       link('deploy.d/shared/10-ntp.yaml')
     }
   },
+  console: {
+    sync: () => {
+      link('deploy.d/shared/20-console-conf.yaml')
+    }
+  },
   nginx: {
     init: () => {
       cp('nginx/sites/00-default.conf')
