@@ -136,6 +136,14 @@ const addons = {
       link('ssl/tool.sh')
     }
   },
+  nginxStream: {
+    init: () => {
+      cp('nginx/addon-stream/stream.d/0-empty.conf', 'nginx/stream.d/0-empty.conf')
+    },
+    sync: () => {
+      link('nginx/addon-stream/addon.d/00-stream.conf', 'nginx/addon.d/00-stream.conf')
+    }
+  },
   dns: {
     init: () => {
       cp('dns/domains/example.com')
