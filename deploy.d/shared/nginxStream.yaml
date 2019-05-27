@@ -1,0 +1,7 @@
+affects:
+  - $nginx
+priority: 111
+modules:
+  link:
+    nginx/stream.d: /etc/nginx/stream.d
+

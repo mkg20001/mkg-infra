@@ -142,6 +142,7 @@ const addons = {
     },
     sync: () => {
       link('nginx/addon-stream/addon.d/00-stream.conf', 'nginx/addon.d/00-stream.conf')
+      link('deploy.d/shared/nginxStream.yaml')
     }
   },
   dns: {
