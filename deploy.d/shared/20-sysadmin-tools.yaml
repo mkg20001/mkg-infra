@@ -8,8 +8,9 @@ modules:
   # nload/nethogs: network monitor
     - nload
     - nethogs
-  # iotop: disk monitor
+  # iotop/nmon: disk monitor
     - iotop
+    - nmon
   # wget/curl: HTTP
     - wget
     - curl
