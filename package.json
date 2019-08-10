@@ -22,11 +22,11 @@
   "license": "MPL-2.0",
   "dependencies": {
     "glob": "^7.1.4",
-    "is-path-inside": "^2.1.0",
+    "is-path-inside": "^3.0.1",
     "mkdirp": "^0.5.1",
     "mkg-deploy-tool": "github:mkg20001/mkg-deploy-tool",
     "simple-tf-dns": "0.0.4",
-    "yargs": "^13.2.4"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {},
   "repository": {

@@ -29,3 +29,5 @@ modules:
     extraArgs:
       create: []
       prune: []
+  log:
+    logfile: /var/log/deploy
