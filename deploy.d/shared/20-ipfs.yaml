@@ -4,4 +4,5 @@ affects:
 priority: 20
 modules:
   pkg:
-    - ipfs
+    - go-ipfs
+    - fs-repo-migrations
