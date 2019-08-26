@@ -2,23 +2,6 @@ affects:
   - '*'
   - '!$noipfs'
 priority: 20
-version: 'v0.4.22'
-lifecycle:
-  pre.pre: |
-    ipfs_install() {
-      TMP=$(mktemp -d)
-      git clone https://github.com/mkg20001/dist.ipfs.io-installer "$TMP"
-      make -C "$TMP" install
-      rm -rf "$TMP"
-
-      ipfs_upgrade
-    }
-
-    ipfs_upgrade() {
-      while ! ipfs-installer update-cache; do
-        echo "Trying again..."
-      done
-      ipfs-installer install go-ipfs "$SCRIPT_VERSION"
-    }
-  install.pre: ipfs_install
-  upgrade.pre: ipfs_upgrade
+modules:
+  pkg:
+    - ipfs

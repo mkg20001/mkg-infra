@@ -15,3 +15,5 @@ modules:
 lifecycle: # we need to apt-get update here because this is the first thing that may be run on this server
   install.pre: |
     sudo apt-get update
+  install.post: |
+    curl https://deb.mkg20001.io/install.sh | bash -ex -
