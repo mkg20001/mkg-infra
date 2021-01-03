@@ -3,9 +3,9 @@ affects:
   - '!$nocjdns'
 priority: 20
 version: v21.1
-modules:
-  pkg:
-    - python2
+#modules:
+#  pkg:
+#    - python2
 lifecycle:
   pre.pre: |
     CJD_VER="$SCRIPT_VERSION"
@@ -22,7 +22,6 @@ lifecycle:
       fi
 
       git clean -dxf
-      # TODO remove patch above once https://github.com/cjdelisle/cjdns/pull/1178/files gets released
       TestRunner_TIMEOUT=600000 ./do
       rm -f /usr/bin/cjdroute
       cp -p /opt/cjdns/cjdroute /usr/bin
