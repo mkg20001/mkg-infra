@@ -3,6 +3,10 @@
 set -e
 
 acme() {
+  if which acme.sh 2>/dev/null >/dev/null; then
+    acme.sh --config-home "$PWD/acme" "$@"
+  fi
+
   if [ ! -e "$HOME/.acme.sh/acme.sh" ]; then # auto-install if not found
     curl https://get.acme.sh | bash -
   fi
