@@ -36,5 +36,5 @@ lifecycle:
       systemctl enable cjdns
       systemctl restart cjdns
     }
-  install.pre: cjdMain
+  install.post: cjdMain
   upgrade.pre: cjdMain
