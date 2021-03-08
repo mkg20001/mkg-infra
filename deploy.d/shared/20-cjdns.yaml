@@ -29,6 +29,8 @@ lifecycle:
 
       port=$(sudo cat /etc/cjdroute.conf | grep "bind" | grep "0.0.0.0" | grep "[0-9][0-9][0-9]*" -o)
       ufw allow "$port/udp" comment CJDNS
+      port=$(sudo cat /etc/cjdroute.conf | grep "beaconPort" | grep "[0-9][0-9][0-9]*" -o)
+      ufw allow "$port/udp" comment CJDNS-beacon
 
       cp contrib/systemd/cjdns.service /etc/systemd/system/
       cp contrib/systemd/cjdns-resume.service /etc/systemd/system/
