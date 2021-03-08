@@ -3,9 +3,9 @@ affects:
   - '!$nocjdns'
 priority: 20
 version: v21.1
-#modules:
-#  pkg:
-#    - python2
+modules:
+  pkg:
+    - build-essentials
 lifecycle:
   pre.pre: |
     CJD_VER="$SCRIPT_VERSION"
