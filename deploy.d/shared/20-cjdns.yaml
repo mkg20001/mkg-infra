@@ -5,7 +5,7 @@ priority: 20
 version: v21.1
 modules:
   pkg:
-    - build-essentials
+    - build-essential
 lifecycle:
   pre.pre: |
     CJD_VER="$SCRIPT_VERSION"
