@@ -1,0 +1,9 @@
+affects:
+  - '*'
+modules:
+  pkg:
+    - unattended-upgrades
+lifecycle:
+  install.post: |
+    # enable all updates
+    sed 's|//\t"${distro_id}:|\t"${distro_id}:|g' -i /etc/apt/apt.conf.d/50unattended-upgrades

@@ -114,6 +114,7 @@ const addons = {
   baseDeploy: {
     sync: () => {
       link('deploy.d/shared/05-basic.yaml')
+      link('deploy.d/shared/07-updates.yaml')
       link('deploy.d/shared/10-ntp.yaml')
     }
   },
@@ -171,9 +172,9 @@ const addons = {
   security: { // pretty basic but still worth it
     sync: () => {
       link('deploy.d/shared/10-fail2ban.yaml')
-      link('deploy.d/shared/10-snoopy.yaml')
+      // link('deploy.d/shared/10-snoopy.yaml')
       link('deploy.d/shared/20-ufw.yaml')
-      link('etc/snoopy.ini')
+      // link('etc/snoopy.ini')
     }
   },
   tools: {
